@@ -28,7 +28,7 @@ public class TNGEvents {
             AxisAlignedBB aabb = collisions.get(i);
             BlockPos pos = new BlockPos(aabb.minX + (aabb.maxX - aabb.minX) * 0.5f, aabb.minY + (aabb.maxY - aabb.minY) * 0.5f, aabb.minZ + (aabb.maxZ - aabb.minZ) * 0.5f);
             IBlockState state = event.getWorld().getBlockState(pos);
-            if (state.getBlock() instanceof BlockFence) {
+            if (state.getBlock() instanceof BlockFence || state.getBlock() instanceof BlockFenceGate) {
                 BlockPos[] positions = new BlockPos[]{pos.east(), pos.west(), pos.north(), pos.south()};
                 for (BlockPos newPos : positions) {
                     IBlockState newState = event.getWorld().getBlockState(newPos);

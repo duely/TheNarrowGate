@@ -1,0 +1,21 @@
+[
+  {
+    "modid": "thenarrowgate",
+    "name": "The Narrow Gate",
+    "description": "Allow horses to pass through the narrow gate to salvation.",
+    "version": "${version}",
+    "credits": "Noobanidus, code inspired by BlayTheNinth",
+    "logoFile": "assets/thenarrowgate/textures/logo.png",
+    "mcversion": "${mc_version}",
+    "url": "http://github.com/noobanidus/thenarrowgate",
+    "updateUrl": "",
+    "authorList": [
+      "Noobanidus"
+    ],
+    "parent": "",
+    "screenshots": [],
+    "dependencies": [
+      "forge"
+    ]
+  }
+]

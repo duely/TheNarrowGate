@@ -1,25 +1,27 @@
 package com.noobanidus.thenarrowgate.events;
 
+import com.noobanidus.thenarrowgate.TheNarrowGate;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.world.GetCollisionBoxesEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.List;
 
+@Mod.EventBusSubscriber(modid= TheNarrowGate.MODID)
 public class TNGEvents {
     @SubscribeEvent
     public static void onCollision(GetCollisionBoxesEvent event) {
         Entity entity = event.getEntity();
 
-        if (entity == null || !entity.isBeingRidden()) return;
-
-        if (!(entity.getLowestRidingEntity() instanceof EntityPlayer)) return;
+        if (!(entity instanceof AbstractHorse) || !entity.isBeingRidden()) return;
 
         List<AxisAlignedBB> collisions = event.getCollisionBoxesList();
         for (int i = collisions.size() - 1; i >= 0; i--) {
@@ -32,6 +34,7 @@ public class TNGEvents {
                     IBlockState newState = event.getWorld().getBlockState(newPos);
                     if (newState.getBlock() instanceof BlockFenceGate && newState.getValue(BlockFenceGate.OPEN)) {
                         event.getCollisionBoxesList().remove(i);
+                        break;
                     }
                 }
             }

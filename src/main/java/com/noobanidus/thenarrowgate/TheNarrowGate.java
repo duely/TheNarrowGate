@@ -30,8 +30,6 @@ public class TheNarrowGate {
     @Mod.Instance(TheNarrowGate.MODID)
     public static TheNarrowGate instance;
 
-    public static List<Class> EventClasses = Lists.newArrayList(TNGEvents.class);
-
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
